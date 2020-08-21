@@ -4,36 +4,31 @@
 	<style>
         addDis{
             text-align: center;
-            margin:auto;
+           
             
         }
     
         a{
-             
+             text-align: center;
              color: blueviolet;
              border: none;
              font-size: 40px;
-             padding: 9px 20px;
-             text-align: center;
+             
+             
              text-decoration: none;
-             display: inline-block;
-             margin: 4px 2px;
+             
+             
              cursor: pointer;
             
         }
         .display{
             color:green;
             font-size: 50px;
-            text-align: center;
+            
             margin: 50px auto;
         }
         
-        .view{
-            text-align: center;
-            margin-left: 50px auto;
-            margin-right: 50px auto;
-           
-        }
+        
     </style>
 </head>
 
@@ -118,7 +113,7 @@ if(isset($_POST['Submit'])) {
         
 		
 		//link to the previous page
-		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+		echo "<br/><a href='javascript:self.history.back();'><=Go Back</a>";
 	} else { 
 		// if all the fields are filled (not empty) 
 			
@@ -128,7 +123,7 @@ if(isset($_POST['Submit'])) {
 		
 		 
 		<p class="display"><?php echo "Data added successfully.";?></p>
-		<p class="view"><a href='index.php'><?php echo "<br/>View Result >>";?></a></p>
+		<a href='index.php'><?php echo "<br/>View Result >>";?></a>
 	<?php }
 }
 ?>
