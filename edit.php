@@ -5,7 +5,7 @@ include_once("config.php");
 if(isset($_POST['update']))
 {	
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['userid']);
+	$userid = mysqli_real_escape_string($mysqli, $_POST['userid']);
 	
 	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
     
