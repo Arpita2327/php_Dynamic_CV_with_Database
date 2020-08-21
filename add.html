@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], input[type=tel],input[type=number],input[type=email], select,textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+    h1{
+        text-align: center;
+        color: darkgray;
+        
+    }
+    
+    a{
+            font-size: 18px;
+            background-color: #4CAF50; /* Green */
+             border: none;
+             color: white;
+             padding: 11px 27px;
+             text-align: center;
+             text-decoration: none;
+             display: inline-block;
+             margin: 4px 2px;
+             cursor: pointer;
+            text-align: center;
+        }
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+
+</head>
+<body>
+<a href="index.php"> <=Home</a>
+<h1>Dynamic CV</h1>
+
+<div class="container">
+ 
+  <form action="add.php" method="post" name="form1">
+   
+   <!-- For name -->
+    <div class="row">
+      <div class="col-25">
+        <label for="name">Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="name" placeholder="Write your name..">
+      </div>
+    </div>
+    
+    
+    <!-- For Address -->
+    <div class="row">
+      <div class="col-25">
+        <label for="address">Address</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="address" placeholder="Write your address..">
+      </div>
+    </div>
+    
+    
+    <!-- For telnumber -->
+    <div class="row">
+      <div class="col-25">
+        <label for="telnumber">Tel-number</label>
+      </div>
+      <div class="col-75">
+        <input type="text"  name="telnumber" placeholder="Write here..">
+      </div>
+    </div>
+    
+    
+    
+    
+    <!-- for email -->
+    <div class="row">
+      <div class="col-25">
+        <label for="email">E-mail</label>
+      </div>
+      <div class="col-75">
+        <input type="text"  name="email" placeholder="Write your email address..">
+      </div>
+    </div>
+    
+    
+    <!-- for age -->
+    <div class="row">
+      <div class="col-25">
+        <label for="date">Age</label>
+      </div>
+      <div class="col-75">
+        <input type="text"  name="age" >
+      </div>
+    </div>
+    
+    
+    
+     <!-- For Nationality -->
+    <div class="row">
+      <div class="col-25">
+        <label for="nationality">Nationality</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="nationality" placeholder=" Ex:(Bangladeshi,Indian,Filipino)">
+      </div>
+    </div>
+    
+      
+    
+    
+    
+     <!-- For Marital Status -->
+    <div class="row">
+      <div class="col-25">
+        <label for="marital">Marital Status</label>
+      </div>
+      <div class="col-75">
+        <input type="text"  name="marital" >
+      </div>
+    </div>
+    
+    
+    
+    
+    <!-- for Educational Background -->
+    <div class="row">
+      <div class="col-25">
+        <label for="education">Educational Background</label>
+      </div>
+      <div class="col-75">
+        <input type="text"  name="education" placeholder="Write here.." style="height:100px">
+      </div>
+    </div>
+    
+    
+    <!-- for skills -->
+    <div class="row">
+      <div class="col-25">
+        <label for="skills">Skills</label>
+      </div>
+      <div class="col-75">
+        <input type="text"  name="skills" placeholder="Write here.." style="height:100px">
+      </div>
+    </div>
+    
+    
+    
+  <!-- for References -->
+    <div class="row">
+      <div class="col-25">
+        <label for="reference">References</label>
+      </div>
+      <div class="col-75">
+        <input type="text"  name="reference" placeholder="Write here.." style="height:100px">
+      </div>
+    </div>
+      
+    
+    
+    <!-- For submit -->
+    <div class="row">
+      <input type="submit" name="Submit" value="Add">
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
