@@ -15,6 +15,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM storedata ORDER BY userid DESC");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
     <style>
         .a{
@@ -22,8 +23,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM storedata ORDER BY userid DESC");
         }
         .displayEcho{
             font-size: 20px;
+            text-align: center;
             
-            box-sizing: content-box;  
             
             
         }
@@ -34,33 +35,59 @@ $result = mysqli_query($mysqli, "SELECT * FROM storedata ORDER BY userid DESC");
              border: none;
              color: white;
              padding: 15px 32px;
-             text-align: center;
+             
              text-decoration: none;
              display: inline-block;
              margin: 4px 2px;
              cursor: pointer;
             text-align: center;
+            
         }
         .edit{
           background-color: #008CBA;
+         
+           
           
         }
         
         .delete{
             background-color: #f44336;
+            
+            
         }
         
         input[type=text]{
              margin: 4px 2px;
         }
+        
+        .tableecho{
+            
+            font-size: 20px;
+             margin-left: 19%;
+            margin-right: 25%;
+        }
+        h1{
+            text-align: center;
+        }
+        
     
+        
+        @media screen and (max-width: 300px) {
+  .tableecho, .col-75,  input[type=text] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
     </style>
 </head>
 <body>
   
    
     
-    
+    <div class="displayEcho"  >    
+   <p > <a href="add.html">Add New Data</a></p>
+         
+    </div>  
     
     
     
@@ -70,44 +97,90 @@ $result = mysqli_query($mysqli, "SELECT * FROM storedata ORDER BY userid DESC");
     
   while($res = mysqli_fetch_array($result)) {  
    ?> 
+   
+  <h1>CV<br><br></h1>
+  <table class="tableecho" style="width:100%"  >    
+ 
+   <tr>
+  <td> Name </td>
+  <td> : </td>
+  <td> <?php  echo $res['name'];?> </td>
+  </tr>
+  
+  
+  
+  <tr>
+  <td><br>Address </td>
+  <td><br> : </td>
+  <td> <br><?php  echo $res['address'];?> </td>
+   </tr>
+   
+  
+   
+  <tr>
+  <td><br>Tel-number </td>
+  <td><br> : </td>
+  <td> <br><?php  echo $res['telnumber'];?> </td>
+  </tr>
+  
+  
+   <tr>
+  <td><br>E-mail </td>
+  <td><br> : </td>
+  <td><br> <?php  echo $res['email'];?> </td>
+  </tr>
+  
+  
+  
+  <tr>
+  <td><br>Age </td>
+  <td><br> : </td>
+  <td><br> <?php  echo $res['age'];?> </td>
+  </tr>
+ 
+  <tr>
+  <td><br>Nationality  </td>
+  <td><br> : </td>
+  <td><br> <?php  echo $res['nationality'];?> </td>
+ </tr>
+ 
+ 
+  <tr>
+  <td><br>Marital Status </td> 
+  <td><br> : </td>
+  <td><br> <?php  echo $res['marital'];?> </td>
+ </tr>
+
+ <tr>
+  <td><br>Educational Backgraound  </td>
+  <td><br> : </td>
+  <td><br> <?php  echo $res['education'];?> </td>
+   </tr>
+   
+  
+ <tr>
+  <td><br>Skills  </td>
+  <td><br> : </td>
+  <td><br> <?php  echo $res['skills'];?> </td>
+  </tr>
+ 
+ <tr>
+  <td><br>Refference  </td>
+  <td><br> : </td>
+  <td><br> <?php  echo $res['reference'];?> </td>
+  
+ </tr>
+      
+      
+          
+          
+          
+
+  
+   </table>
    <div class="a">
-<div class="displayEcho"  >      
-   
-   <p class="name">Name: <?php  echo $res['name'];?></p>
-   
-   <p class="address">Address: <?php  echo $res['address'];?></p>
-  
-   
-  
-   <p class="telnumber">Tel-number: <?php  echo $res['telnumber'];?></p>
-  
-  
-   
-   <p class="email">E-mail: <?php  echo $res['email'];?></p>
-  
-  
-   <p class="age">Age: <?php  echo $res['age'];?></p>
-  
-   
-  
-  <p class="nationality">Nationality:  <?php  echo $res['nationality'];?></p>
- 
- 
-  
-  <p class="marital">Marital Status:  <?php  echo $res['marital'];?></p>
- 
- 
-  <p class="education">Educational Backgraound:  <?php  echo $res['education'];?></p>
- 
-   
- 
-  <p class="skills">Skills:  <?php  echo $res['skills'];?></p>
- 
- 
- 
-  <p class="reference">Refference:  <?php  echo $res['reference'];?></p>
-  
-   
+   <?php  echo "<br>";?>
+   <?php  echo "<br>";?>
    <?php  echo "<br>";?>
    <a class="edit" href=<?php  echo "\"edit.php?
       userid=$res[userid]\">Edit</a>";?> 
@@ -116,15 +189,16 @@ $result = mysqli_query($mysqli, "SELECT * FROM storedata ORDER BY userid DESC");
     <a class="delete" href=<?php echo "\"delete.php?userid=$res[userid]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>";	?>
   
    <?php  echo "<br>";?>
-   
+   <?php  echo "<br>";?>
+       <?php  echo "<br>";?>
+   <?php  echo "<br>";?>
+   <?php  echo "<br>";?>
+   <?php  echo "<br>";?>
    </div>
     <?php  
   }
 	?>
-     
-   <p > <a href="add.html">Add New Data</a></p>
-         
-    </div>  
+   
         
 </body>
 </html>
