@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2020 at 04:26 PM
+-- Generation Time: Aug 22, 2020 at 03:05 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -45,10 +45,7 @@ CREATE TABLE `storedata` (
 -- Dumping data for table `storedata`
 --
 
-INSERT INTO `storedata` (`name`, `address`, `telnumber`, `email`, `age`, `nationality`, `marital`, `education`, `skills`, `reference`, `userid`) VALUES
-('Arpita', 'dhaka', 17, 'aroy6852@gmail.com', 22, 'Bangladeshi', 's', 'a', 'aaaa', 'aaaa', 1),
-('Oindrila', 'dhaka', 1788, 'aroy6852@gmail.com', 22, 'Bangladeshi', 's', 'Graduate', 'Sleeping', 'none', 5),
-('Oindrila', 'dhaka', 1788, 'aroy6852@gmail.com', 22, 'Bangladeshi', 's', 'Graduate', 'Sleeping', 'none', 6);
+
 
 --
 -- Indexes for dumped tables
@@ -68,7 +65,7 @@ ALTER TABLE `storedata`
 -- AUTO_INCREMENT for table `storedata`
 --
 ALTER TABLE `storedata`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
