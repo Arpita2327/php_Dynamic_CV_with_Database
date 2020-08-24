@@ -1,34 +1,44 @@
+<?php session_start(); ?>
+
+<?php
+if(!isset($_SESSION['valid'])) {
+	header('Location: login.php');
+}
+?>
+
+
+
 <?php
 // including the database connection file
-include_once("config.php");
+include_once("connection.php");
 
 if(isset($_POST['update']))
 {	
 
-	$userid = mysqli_real_escape_string($mysqli, $_POST['userid']);
+	$userid =  $_POST['userid'];
 	
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
+	$name = $_POST['name'];
     
-    $address = mysqli_real_escape_string($mysqli, $_POST['address']);
+    $address =  $_POST['address'];
     
-    $telnumber = mysqli_real_escape_string($mysqli, $_POST['telnumber']);
+    $telnumber = $_POST['telnumber'];
     
-    $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+    $email = $_POST['email'];
     
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
+	$age = $_POST['age'];
     
-	$nationality = mysqli_real_escape_string($mysqli, $_POST['nationality']);
+	$nationality = $_POST['nationality'];
     
    
     
-    $marital=mysqli_real_escape_string($mysqli, $_POST['marital']);
+    $marital=$_POST['marital'];
     
 	
-    $education=mysqli_real_escape_string($mysqli, $_POST['education']);
+    $education= $_POST['education'];
     
-    $skills=mysqli_real_escape_string($mysqli, $_POST['skills']);
+    $skills=$_POST['skills'];
     
-    $reference=mysqli_real_escape_string($mysqli, $_POST['reference']);
+    $reference=$_POST['reference'];
     
     
     
@@ -85,8 +95,8 @@ if(isset($_POST['update']))
 		$result = mysqli_query($mysqli, "UPDATE storedata SET name='$name',address='$address',telnumber='$telnumber',email='$email',age='$age',nationality='$nationality',marital='$marital',education='$education',skills='$skills',reference='$reference' 
         WHERE userid=$userid");
 		
-		//redirectig to the display page. In our case, it is index.php
-		header("Location: index.php");
+		//redirectig to the display page. In our case, it is view.php
+		header("Location: view.php");
 	}
 }
 ?>
@@ -178,6 +188,21 @@ input[type=submit]:hover {
         color: darkgray;
         
     }
+    
+     a{
+            font-size: 18px;
+            background-color: #4CAF50; /* Green */
+             border: none;
+             color: white;
+             padding: 11px 27px;
+             text-align: center;
+             text-decoration: none;
+             display: inline-block;
+             margin: 4px 2px;
+             cursor: pointer;
+            text-align: center;
+        }
+    
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
@@ -191,7 +216,8 @@ input[type=submit]:hover {
 </head>
 
 <body>
-	<a href="index.php">Home</a>
+	<a href="index.php">Home</a><a href="view.php">View Products</a><a href="logout.php">Logout</a>
+	<br/><br/>
 	<div class="container">
 	
 	<form name="form1" method="post" action="edit.php">
