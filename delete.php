@@ -1,13 +1,21 @@
+<?php session_start(); ?>
+
+<?php
+if(!isset($_SESSION['valid'])) {
+	header('Location: login.php');
+}
+?>
+
 <?php
 //including the database connection file
-include("config.php");
+include("connection.php");
 
 //getting id of the data from url
 $userid = $_GET['userid'];
 
 //deleting the row from table
-$result = mysqli_query($mysqli, "DELETE FROM storedata WHERE userid=$userid");
+$result=mysqli_query($mysqli, "DELETE FROM products WHERE userid=$userid");
 
-//redirecting to the display page (index.php in our case)
-header("Location:index.php");
+//redirecting to the display page (view.php in our case)
+header("Location:view.php");
 ?>
