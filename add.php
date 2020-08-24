@@ -1,3 +1,13 @@
+<?php session_start(); ?>
+
+<?php
+if(!isset($_SESSION['valid'])) {
+	header('Location: login.php');
+}
+?>
+
+
+
 <html>
 <head>
 	<title>Add Data</title>
@@ -35,32 +45,32 @@
 <body>
 <?php
 //including the database connection file
-include_once("config.php");
+include_once("connection.php");
 
 if(isset($_POST['Submit'])) {	
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
+	$name =  $_POST['name'];
     
-    $address = mysqli_real_escape_string($mysqli, $_POST['address']);
+    $address =$_POST['address'];
     
-    $telnumber = mysqli_real_escape_string($mysqli, $_POST['telnumber']);
+    $telnumber = $_POST['telnumber'];
     
-    $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+    $email = $_POST['email'];
     
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
+	$age = $_POST['age'];
     
-	$nationality = mysqli_real_escape_string($mysqli, $_POST['nationality']);
+	$nationality = $_POST['nationality'];
     
    
     
-    $marital=mysqli_real_escape_string($mysqli, $_POST['marital']);
+    $marital=$_POST['marital'];
     
 	
-    $education=mysqli_real_escape_string($mysqli, $_POST['education']);
+    $education= $_POST['education'];
     
-    $skills=mysqli_real_escape_string($mysqli, $_POST['skills']);
+    $skills=$_POST['skills'];
     
-    $reference=mysqli_real_escape_string($mysqli, $_POST['reference']);
-    
+    $reference=$_POST['reference'];
+    $loginId = $_SESSION['userid'];
     
     
     
@@ -118,12 +128,12 @@ if(isset($_POST['Submit'])) {
 		// if all the fields are filled (not empty) 
 			
 		//insert data to database	
-		$result = mysqli_query($mysqli, "INSERT INTO storedata (name,address,telnumber,email,age,nationality,marital,education,skills,reference) VALUES('$name', '$address','$telnumber','$email','$age','$nationality','$marital','$education','$skills','$reference')");
+		$result = mysqli_query($mysqli, "INSERT INTO storedata (name,address,telnumber,email,age,nationality,marital,education,skills,reference, login_id) VALUES('$name', '$address','$telnumber','$email','$age','$nationality','$marital','$education','$skills','$reference', '$loginId')");
 		?>
 		
 		 
 		<p class="display"><?php echo "Data added successfully.";?></p>
-		<a href='index.php'><?php echo "<br/>View Result >>";?></a>
+		<a href='view.php'><?php echo "<br/>View Result >>";?></a>
 	<?php }
 }
 ?>
