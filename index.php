@@ -1,205 +1,110 @@
+<?php session_start(); ?>
 
 <?php
-//including the database connection file
-include_once("config.php");
-
-//fetching data in descending order (lastest entry first)
-//$result = mysql_query("SELECT * FROM users ORDER BY id DESC"); // mysql_query is deprecated
-$result = mysqli_query($mysqli, "SELECT * FROM storedata ORDER BY userid DESC"); // using mysqli_query instead
+if(!isset($_SESSION['valid'])) {
+	header('Location: login.php');
+}
 ?>
 
 
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
-    <style>
-        .a{
-            text-align: center;
-        }
-        .displayEcho{
-            font-size: 20px;
-            text-align: center;
-            
-            
-            
-        }
-        
-        a{
-            font-size: 20px;
-            background-color: #4CAF50; /* Green */
-             border: none;
-             color: white;
-             padding: 15px 32px;
-             
-             text-decoration: none;
-             display: inline-block;
-             margin: 4px 2px;
-             cursor: pointer;
-            text-align: center;
-            
-        }
-        .edit{
-          background-color: #008CBA;
-         
-           
-          
-        }
-        
-        .delete{
-            background-color: #f44336;
-            
-            
-        }
-        
-        input[type=text]{
-             margin: 4px 2px;
-        }
-        
-        .tableecho{
-            
-            font-size: 20px;
-             margin-left: 19%;
-            margin-right: 25%;
-        }
-        h1{
-            text-align: center;
-        }
-        
-    
-        
-        @media screen and (max-width: 300px) {
-  .tableecho, .col-75,  input[type=text] {
-    width: 100%;
-    margin-top: 0;
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  background-color: darkviolet;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .header-right {
+    float: none;
   }
 }
-    </style>
+</style>
 </head>
 <body>
-  
-   
-    
-    <div class="displayEcho"  >    
-   <p > <a href="add.html">Add New Data</a></p>
-         
-    </div>  
-    
-    
-    
-    <?php 
-	
-	
-    
-  while($res = mysqli_fetch_array($result)) {  
-   ?> 
-   
-  <h1>CV<br><br></h1>
-  <table class="tableecho" style="width:100%"  >    
- 
-   <tr>
-  <td> Name </td>
-  <td> : </td>
-  <td> <?php  echo $res['name'];?> </td>
-  </tr>
-  
-  
-  
-  <tr>
-  <td><br>Address </td>
-  <td><br> : </td>
-  <td> <br><?php  echo $res['address'];?> </td>
-   </tr>
-   
-  
-   
-  <tr>
-  <td><br>Tel-number </td>
-  <td><br> : </td>
-  <td> <br><?php  echo $res['telnumber'];?> </td>
-  </tr>
-  
-  
-   <tr>
-  <td><br>E-mail </td>
-  <td><br> : </td>
-  <td><br> <?php  echo $res['email'];?> </td>
-  </tr>
-  
-  
-  
-  <tr>
-  <td><br>Age </td>
-  <td><br> : </td>
-  <td><br> <?php  echo $res['age'];?> </td>
-  </tr>
- 
-  <tr>
-  <td><br>Nationality  </td>
-  <td><br> : </td>
-  <td><br> <?php  echo $res['nationality'];?> </td>
- </tr>
- 
- 
-  <tr>
-  <td><br>Marital Status </td> 
-  <td><br> : </td>
-  <td><br> <?php  echo $res['marital'];?> </td>
- </tr>
 
- <tr>
-  <td><br>Educational Backgraound  </td>
-  <td><br> : </td>
-  <td><br> <?php  echo $res['education'];?> </td>
-   </tr>
-   
-  
- <tr>
-  <td><br>Skills  </td>
-  <td><br> : </td>
-  <td><br> <?php  echo $res['skills'];?> </td>
-  </tr>
- 
- <tr>
-  <td><br>Refference  </td>
-  <td><br> : </td>
-  <td><br> <?php  echo $res['reference'];?> </td>
-  
- </tr>
-      
-      
-          
-          
-          
+<div class="header">
+  <a href="index.php" class="logo">Dynamic CV</a>
+  <div class="header-right">
+    
+    <a href="view.php">View CV list</a>
+    <a href="add.html">Add CV</a>
+    <a class="active" href="logout.php">Log Out</a>
+  </div>
+</div>
 
-  
-   </table>
-   <div class="a">
-   <?php  echo "<br>";?>
-   <?php  echo "<br>";?>
-   <?php  echo "<br>";?>
-   <a class="edit" href=<?php  echo "\"edit.php?
-      userid=$res[userid]\">Edit</a>";?> 
-      
-      
-    <a class="delete" href=<?php echo "\"delete.php?userid=$res[userid]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>";	?>
-  
-   <?php  echo "<br>";?>
-   <?php  echo "<br>";?>
-       <?php  echo "<br>";?>
-   <?php  echo "<br>";?>
-   <?php  echo "<br>";?>
-   <?php  echo "<br>";?>
-   </div>
-    <?php  
-  }
+<div style="padding-left:20px">
+ <?php
+	if(isset($_SESSION['valid'])) {			
+		include("connection.php");					
+		$result = mysqli_query($mysqli, "SELECT * FROM login");
 	?>
-   
-        
+				
+  
+  <h1 style="text-align:center;"><br><br><br>Hey! <?php echo $_SESSION['name'] ?> </h1>
+  <h3 style="text-align:center;">Welcome to Dynamic CV page!</h3>
+  <?php	
+	} else {
+		echo "<h1>You must be logged in.</h1><br/><br/>";
+		
+	}
+	?>
+</div>
+
 </body>
 </html>
+
+
+
+
+
+
 
